@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>History | Diabetes System</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body class="bg-light">
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-dark custom-navbar px-3">
+    <span class="navbar-brand fw-bold">🩺 Diabetes Prediction System</span>
+
+    <div>
+        <a href="/home" class="btn btn-light btn-sm me-2">Dashboard</a>
+        <a href="/logout" class="btn btn-danger btn-sm">Logout</a>
+    </div>
+</nav>
+
+<!-- CONTENT -->
+<div class="container mt-5">
+
+    <div class="card shadow-lg p-4">
+
+        <h3 class="mb-4 text-center fw-bold">📊 Your Prediction History</h3>
+
+        {% if data %}
+
+        <div class="table-responsive">
+
+            <table class="table table-hover text-center align-middle">
+
+                <thead class="table-dark">
+                    <tr>
+                        <th>#</th>
+                        <th>Name</th>
+                        <th>Glucose</th>
+                        <th>BMI</th>
+                        <th>Age</th>
+                        <th>Risk %</th>
+                        <th>Level</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for row in data %}
+                    <tr>
+                        <td>{{ loop.index }}</td>
+                        <td>{{ row[1] }}</td>
+                        <td>{{ row[2] }}</td>
+                        <td>{{ row[3] }}</td>
+                        <td>{{ row[4] }}</td>
+                        <td><b>{{ row[5]|round(2) }}%</b></td>
+
+                        <td>
+                            {% if row[6] == "Low Risk" %}
+                                <span class="badge bg-success">{{ row[6] }}</span>
+                            {% elif row[6] == "Moderate Risk" %}
+                                <span class="badge bg-warning text-dark">{{ row[6] }}</span>
+                            {% else %}
+                                <span class="badge bg-danger">{{ row[6] }}</span>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+
+            </table>
+
+        </div>
+
+        {% else %}
+
+        <!-- EMPTY STATE -->
+        <div class="text-center text-muted">
+            <h5>No history found</h5>
+            <p>Make your first prediction to see results here.</p>
+        </div>
+
+        {% endif %}
+
+        <!-- BACK BUTTON -->
+        <a href="/home" class="btn btn-primary mt-4 w-100">
+            Back to Dashboard
+        </a>
+
+    </div>
+
+</div>
+
+</body>
+</html>
