@@ -39,7 +39,7 @@ def init_db():
         username TEXT,
         glucose REAL,
         bmi REAL,
-        age INTEGER,pr
+        age INTEGER,
         risk REAL,
         level TEXT,
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
