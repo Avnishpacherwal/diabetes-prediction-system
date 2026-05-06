@@ -39,7 +39,7 @@ def init_db():
         username TEXT,
         glucose REAL,
         bmi REAL,
-        age INTEGER,
+        age INTEGER,pr
         risk REAL,
         level TEXT,
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
@@ -61,7 +61,7 @@ def login():
         conn = get_db()
         cursor = conn.cursor()
 
-        # ✅ LOGIN USING USERNAME OR EMAIL
+        # LOGIN USING USERNAME OR EMAIL
         cursor.execute(
             "SELECT * FROM users WHERE username=? OR email=?",
             (user_input, user_input)
@@ -184,6 +184,20 @@ def predict():
         dpf = 0.5 if dpf_input == "1" else 0.2
 
         age = float(request.form['age'])
+
+        # ---------------- VALIDATION ----------------
+
+        if glucose < 70 or glucose > 300:
+            return "Invalid Glucose Range"
+
+        if bp < 40 or bp > 200:
+            return "Invalid Blood Pressure Range"
+
+        if bmi < 10 or bmi > 60:
+            return "Invalid BMI Range"
+
+        if insulin < 0 or insulin > 900:
+            return "Invalid Insulin Range"
 
         data = [preg, glucose, bp, skin, insulin, bmi, dpf, age]
 

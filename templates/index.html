@@ -58,7 +58,7 @@
 <!-- MAIN -->
 <div class="container mt-5">
 
-    <!-- 🔥 FORM WRAPS EVERYTHING (IMPORTANT FIX) -->
+    <!-- FORM -->
     <form action="/predict" method="post">
 
         <div class="row">
@@ -69,7 +69,7 @@
 
                     <h5 class="mb-3">🩺 Symptoms</h5>
 
-                    <!-- ✔ UNIQUE VALUES (IMPORTANT) -->
+                    <!-- UNIQUE VALUES -->
                     <label><input type="checkbox" name="symptoms" value="frequent_urination" class="symptom"> Frequent urination</label><br>
                     <label><input type="checkbox" name="symptoms" value="excess_thirst" class="symptom"> Excess thirst</label><br>
                     <label><input type="checkbox" name="symptoms" value="fatigue" class="symptom"> Fatigue</label><br>
@@ -115,7 +115,7 @@
                         <!-- Glucose -->
                         <div class="col-md-4 mb-3">
                             <label><i class="bi bi-droplet"></i> Glucose</label>
-                            <input name="glucose" class="form-control" required>
+                            <input type="number" name="glucose" class="form-control" min="70" max="300" required>
                             <small class="text-muted">
                                 Normal: 70–140 mg/dL (blood test)
                             </small>
@@ -124,7 +124,7 @@
                         <!-- Blood Pressure -->
                         <div class="col-md-4 mb-3">
                             <label><i class="bi bi-activity"></i> Blood Pressure</label>
-                            <input name="bp" class="form-control" required>
+                            <input type="number" name="bp" class="form-control" min="40" max="200" required>
                             <small class="text-muted">
                                 Normal: ~120/80 mmHg (BP monitor)
                             </small>
@@ -133,19 +133,19 @@
                         <!-- Skin -->
                         <div class="col-md-4 mb-3">
                             <label>Skin Thickness</label>
-                            <input name="skin" class="form-control">
+                            <input type="number" name="skin" class="form-control" min="0" max="100">
                         </div>
 
                         <!-- Insulin -->
                         <div class="col-md-4 mb-3">
                             <label>Insulin</label>
-                            <input name="insulin" class="form-control">
+                            <input type="number" name="insulin" class="form-control" min="0" max="900">
                         </div>
 
                         <!-- BMI -->
                         <div class="col-md-4 mb-3">
                             <label>BMI</label>
-                            <input name="bmi" class="form-control">
+                            <input type="number" step="0.1" name="bmi" class="form-control" min="10" max="60">
                             <small class="text-muted">Weight / Height²</small>
                         </div>
 
@@ -185,7 +185,7 @@
 <!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
-<!-- 🔥 SYMPTOM SCRIPT (FIXED) -->
+<!-- SYMPTOM -->
 <script>
 document.addEventListener("DOMContentLoaded", function() {
 
