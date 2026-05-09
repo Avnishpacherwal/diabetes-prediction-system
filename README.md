@@ -1,10 +1,10 @@
-# 🩺 Diabetes Prediction System
+# Diabetes Prediction System
 
 A Machine Learning web application that predicts diabetes risk using user health data and symptoms.
 
 ---
 
-## 🚀 Features
+## Features
 
 - User Authentication (Login/Register)
 - Profile with Name, Email, Age, Gender
@@ -16,7 +16,7 @@ A Machine Learning web application that predicts diabetes risk using user health
 
 ---
 
-## 🧰 Tech Stack
+## Tech Stack
 
 - Frontend: HTML, CSS, Bootstrap
 - Backend: Flask (Python)
@@ -26,7 +26,7 @@ A Machine Learning web application that predicts diabetes risk using user health
 
 ---
 
-## ⚙️ Setup (Local)
+## Setup (Local)
 
 ```bash
 pip install -r requirements.txt
